@@ -2,10 +2,12 @@
 esrespuesta('si').
 esrespuesta('no').
 %PARA Tortugas
-espregunta('¿Lóbulo posterior de plastrón fijo?',X):-esrespuesta(X).
-espregunta('¿Escama nasal dividida?',X):-esrespuesta(X).
-
-
+espregunta('Lobulo posterior de plastron fijo?',X):-esrespuesta(X).
+espregunta('Escama nasal dividida?',X):-esrespuesta(X).
+%Segunda RAMA
+espregunta('Escamas alrededor de la parte media del cuerpo perfectamente lisas, cicloides y de tamaño similar?',X):-esrespuesta(X).
+espregunta('Frontonasal presente, pliegue lateral bien desarrollado?',X):-esrespuesta(X).
+espregunta('Segundo par de escudos geniales separados por una escama?',X):-esrespuesta(X).
 
 %MOSCA BLANCA
 espregunta('se ubica en el enves de la hoja ?',X):-esrespuesta(X).
@@ -53,10 +55,10 @@ espregunta('se encuentra en las ramas?',X):-esrespuesta(X).
 espregunta('se encuentra  en los tallos?',X):-esrespuesta(X).
 
 %PRINCIPAL
-espregunta('¿Provisto de concha ósea que cubre el lomo ?',X):-esrespuesta(X).
+espregunta('Provisto de concha ósea que cubre el lomo ?',X):-esrespuesta(X).
 
 main:-
-        new(D,dialog('SISTEMA EXPERTO DE PLAGAS DE TARA')),
+        new(D,dialog('SISTEMA EXPERTO DE REPTILES DEL VALLE DE MEXICO')),
         send(D,size,size(560,400)),
         send(D,colour,colour(red)),
         send(D, append, new(Menu, menu_bar)),
@@ -83,7 +85,7 @@ mostrar(V,D,M):- new(I, image(V)),
         send(D1,below(M)).
 
 pp:-new(D,dialog('PREGUNTAS')),
-        new(Pre1,menu('¿Provisto de concha ósea que cubre el lomo ?')),
+        new(Pre1,menu('Provisto de concha ósea que cubre el lomo ?')),
        send_list(Pre1,append,[si , no]),
           send(D,append(Pre1)),
 
@@ -96,11 +98,11 @@ pp:-new(D,dialog('PREGUNTAS')),
 
 %PARA Tortugas
 principal(P1):-
-espregunta('¿Provisto de concha ósea que cubre el lomo ?',P1),P1='si',
+espregunta('Provisto de concha ósea que cubre el lomo ?',P1),P1='si',
 pc.
 
 principal(P1):-
-espregunta('¿Provisto de concha ósea que cubre el lomo ?',P1),P1='no',
+espregunta('Provisto de concha ósea que cubre el lomo ?',P1),P1='no',
 ph.
 
 
@@ -111,9 +113,9 @@ send(D,open,point(350,350)).
 
 %PANTALLA DE TORTUGAS
 pc:-new(D,dialog('PREGUNTAS')),
-        new(Pre1,menu('¿Lóbulo posterior de plastrón fijo?')),
+        new(Pre1,menu('Lobulo posterior de plastron fijo?')),
        send_list(Pre1,append,[si , no]),
-        new(Pre2,menu('¿Escama nasal dividida?')),
+        new(Pre2,menu('Escama nasal dividida?')),
         send_list(Pre2,append,[si,no]),
        send(D,append(Pre1)),
        send(D,append(Pre2)),
@@ -125,20 +127,20 @@ pc:-new(D,dialog('PREGUNTAS')),
 
 %Kinosternon herrerai
 tortugas(P1,P2):-
-  espregunta('¿Lóbulo posterior de plastrón fijo?',P1),P1='si',
-  espregunta('¿Escama nasal dividida?',P2),P2='no',
+  espregunta('Lobulo posterior de plastron fijo?',P1),P1='si',
+  espregunta('Escama nasal dividida?',P2),P2='no',
   pf1('./SEherpetofauna/imagenes/Kinosternon-herrerai.jpg','CHINCHES','./SEherpetofauna/imagenes/Kinosternon-herrerai.jpg').
 
 %Kinosternon hirtipes
 tortugas(P1,P2):-
-  espregunta('¿Lóbulo posterior de plastrón fijo?',P1),P1='no',
-  espregunta('¿Escama nasal dividida?',P2),P2='si',
+  espregunta('Lobulo posterior de plastron fijo?',P1),P1='no',
+  espregunta('Escama nasal dividida?',P2),P2='si',
   pf1('./SEherpetofauna/imagenes/Kinosternon hirtipes.jpg','CHINCHES','./SEherpetofauna/imagenes/Kinosternon hirtipes.jpg').
 
 %Kinosternon integrum
 tortugas(P1,P2):-
-  espregunta('¿Lóbulo posterior de plastrón fijo?',P1),P1='no',
-  espregunta('¿Escama nasal dividida?',P2),P2='no',
+  espregunta('Lobulo posterior de plastron fijo?',P1),P1='no',
+  espregunta('Escama nasal dividida?',P2),P2='no',
   pf1('./SEherpetofauna/imagenes/Kinosternon integrum.jpg','CHINCHES','./SEherpetofauna/imagenes/Kinosternon integrum.jpg').
 
   tortugas(_,_):-new(D,dialog('ERROR')),
@@ -146,187 +148,66 @@ tortugas(P1,P2):-
   send(D,append,L),
   send(D,open,point(350,350)).
 
-%PANTALLA DE HOJAS
 ph:-new(D,dialog('PREGUNTAS')),
-        new(Pre1,menu('tiene las hojas picadas?')),
-       send_list(Pre1,append,[si , no]),
-        new(Pre2,menu('tiene manchas blanquesinas ?')),
-        send_list(Pre2,append,[si,no]),
-        new(Pre3,menu('tiene las hojas minadas?')),
-        send_list(Pre3,append,[si,no]),
-        new(Pre4,menu('tiene las hojas encojidas?')),
-        send_list(Pre4,append,[si,no]),
-        new(Pre5,menu('tiene las hojas secas ?')),
-       send_list(Pre5,append,[si,no]),
-        new(Pre6,menu('tiene perdida de hojas?')),
-         send_list(Pre6,append,[si,no]),
-       send(D,append(Pre1)),
-       send(D,append,Pre2),
-       send(D,append,Pre3),
-       send(D,append,Pre4),
-       send(D,append,Pre5),
-       send(D,append(Pre6)),
-       new(B1,button(atras,and(message(@prolog,pp),message(D,destroy)))),
-                new(B,button(siguiente,message(@prolog,hojas,Pre1?selection,Pre2?selection,Pre3?selection,Pre4?selection,Pre5?selection,Pre6?selection))),
-        send(D,append,B1),
-      send(D,append,B),
-        send(D,open,point(300,300)).
+          new(Pre1,menu('Escamas alrededor de la parte media del cuerpo perfectamente lisas, cicloides y de tamaño similar?')),
+         send_list(Pre1,append,[si , no]),
+            send(D,append(Pre1)),
+            new(B1,button(atras,and(message(@prolog,pp),message(D,destroy)))),
+        new(B,button(siguiente,and(message(@prolog,barisia,Pre1?selection),message(D,destroy)))),
+        send(D,append,B),
+        send(D,default_button,siguiente),
+          send(D,open,point(350,350)).
+
+  %Segunda división
+  barisia(P1):-
+  espregunta('Escamas alrededor de la parte media del cuerpo perfectamente lisas, cicloides y de tamaño similar?',P1),P1='si',
+  pb.
+
+  barisia(P1):-
+  espregunta('Escamas alrededor de la parte media del cuerpo perfectamente lisas, cicloides y de tamaño similar?',P1),P1='no',
+  pescamasdorso.
 
 
-%CHINCHES
-hojas(P1,P2,P3,P4,P5,P6):-
-espregunta('tiene las hojas picadas?',P1),P1='si',
-espregunta('tiene manchas blanquesinas ?',P2),P2='no',
-espregunta('tiene las hojas minadas?',P3),P3='no',
-espregunta('tiene las hojas encojidas?',P4),P4='si',
-espregunta('tiene las hojas secas ?',P5),P5='no',
-espregunta('tiene perdida de hojas?',P6),P6='no',
+  barisia(_,_):-new(D,dialog('ERROR')),
+  new(L,label(l,'ELIJA SOLO UNA OPCION',font('times','roman',16))),
+  send(D,append,L),
+  send(D,open,point(350,350)).
 
-        pf1('C:/Programa/chinches.jpg','CHINCHES','C:/Programa/miguel.bmp').
-%Mosca minadora terminado
-hojas(P1,P2,P3,P4,P5,P6):-
-espregunta('tiene las hojas picadas?',P1),P1='no',
-espregunta('tiene manchas blanquesinas ?',P2),P2='no',
-espregunta('tiene las hojas minadas?',P3),P3='si',
-espregunta('tiene las hojas encojidas?',P4),P4='no',
-espregunta('tiene las hojas secas ?',P5),P5='no',
-espregunta('tiene perdida de hojas?',P6),P6='no',
+pb:-new(D,dialog('PREGUNTAS')),
+    new(Pre1,menu('Frontonasal presente, pliegue lateral bien desarrollado?')),
+    send_list(Pre1,append,[si , no]),
+    new(Pre2,menu('Segundo par de escudos geniales separados por una escama?')),
+    send_list(Pre2,append,[si,no]),
+    send(D,append(Pre1)),
+    send(D,append(Pre2)),
+    new(B1,button(atras,and(message(@prolog,pp),message(D,destroy)))),
+            new(B,button(siguiente,message(@prolog,fronto,Pre1?selection,Pre2?selection))),
+    send(D,append,B1),
+    send(D,append,B),
+    send(D,open,point(300,300)).
 
-        pf1('C:/Programa/moscam.jpg','MOSCA MINADORA','C:/Programa/moscamt.bmp').
+    %Abronia deppii
+    fronto(P1,P2):-
+    espregunta('Frontonasal presente, pliegue lateral bien desarrollado?',P1),P1='si',
+    espregunta('Segundo par de escudos geniales separados por una escama?',P2),P2='no',
+    pf1('./SEherpetofauna/imagenes/Abronia deppii.jpg','CHINCHES','./SEherpetofauna/imagenes/Abronia deppii.jpg').
 
-%ACARINA
-hojas(P1,P2,P3,P4,P5,P6):-
-espregunta('tiene las hojas picadas?',P1),P1='no',
-espregunta('tiene manchas blanquesinas ?',P2),P2='si',
-espregunta('tiene las hojas minadas?',P3),P3='no',
-espregunta('tiene las hojas encojidas?',P4),P4='no',
-espregunta('tiene las hojas secas ?',P5),P5='si',
-espregunta('tiene perdida de hojas?',P6),P6='si',
+    %Barisia imbricata
+    fronto(P1,P2):-
+    espregunta('Frontonasal presente, pliegue lateral bien desarrollado?',P1),P1='no',
+    espregunta('Segundo par de escudos geniales separados por una escama?',P2),P2='si',
+    pf1('./SEherpetofauna/imagenes/Barisia imbricata.jpg','CHINCHES','./SEherpetofauna/imagenes/Barisia imbricata.jpg').
 
-        pf2('C:/Programa/acarina.jpg','ACARINA','C:/Programa/acarinat.bmp').
+    %Barisia herrerae
+    fronto(P1,P2):-
+    espregunta('Frontonasal presente, pliegue lateral bien desarrollado?',P1),P1='no',
+    espregunta('Segundo par de escudos geniales separados por una escama?',P2),P2='si',
+    pf1('./SEherpetofauna/imagenes/Barisia herrerae.jpg','CHINCHES','./SEherpetofauna/imagenes/Barisia herrerae.jpg').
 
-hojas(_,_,_,_,_,_):-new(D,dialog('ERROR')),
-new(L,label(l,'PLAGA NO DETERMINADA',font('times','roman',16))),
-send(D,append,L),
-send(D,open,point(350,350)).
-
-pl:-new(D,dialog('PREGUNTAS')),
-        new(Pre1,menu('presenta   larvas   blancas?')),
-       send_list(Pre1,append,[si , no]),
-        new(Pre2,menu('la larva es grande?                 ')),
-        send_list(Pre2,append,[si,no]),
-        new(Pre3,menu('tiene las hojas comidas?            ')),
-        send_list(Pre3,append,[si,no]),
-        new(Pre4,menu('tiene la medula de tallo destruida ?')),
-        send_list(Pre4,append,[si,no]),
-        new(Pre5,menu('la larva es alargada?               ')),
-       send_list(Pre5,append,[si,no]),
-        new(Pre6,menu('se encuentra en las vainas?         ')),
-       send_list(Pre6,append,[si , no]),
-        new(Pre7,menu('se encuentra en las ramas?          ')),
-        send_list(Pre7,append,[si,no]),
-        new(Pre8,menu('se encuentra  en los tallos?        ')),
-        send_list(Pre8,append,[si,no]),
-        new(Pre9,menu('tiene brotes comidas?               ')),
-        send_list(Pre9,append,[si,no]),
-        new(Pre10,menu('tiene el follaje destruida ?       ')),
-       send_list(Pre10,append,[si,no]),
-          send(D,append(Pre1)),
-       send(D,append,Pre2),
-       send(D,append,Pre3),
-       send(D,append,Pre4),
-       send(D,append,Pre5),
-       send(D,append(Pre6)),
-       send(D,append,Pre7),
-       send(D,append,Pre8),
-       send(D,append,Pre9),
-       send(D,append,Pre10),
-
-       new(B1,button(atras,and(message(@prolog,pp),message(D,destroy)))),
-      new(B,button(siguiente,message(@prolog,larvas,Pre1?selection,Pre2?selection,Pre3?selection,Pre4?selection,Pre5?selection,Pre6?selection,Pre7?selection,Pre8?selection,Pre9?selection,Pre10?selection))),
-      send(D,append,B1),
-      send(D,append,B),
-        send(D,open,point(300,300)).
-
-
-
-
-
-
-
-%PINNASPIS
-
-larvas(P1,P2,P3,P4,P5,P6,P7,P8,P9,P10):-
-espregunta('presenta larvas blancas?',P1),P1='si',
-espregunta('la larva es grande?',P2),P2='no',
-espregunta('tiene las hojas comidas?',P3),P3='no',
-espregunta('tiene la medula de tallo destruida ?',P4),P4='no',
-espregunta('la larva es alargada?',P5),P5='si',
-espregunta('se encuentra en las vainas?',P6),P6='si',
-espregunta('se encuentra en las ramas?',P7),P7='no',
-espregunta('se encuentra  en los tallos?',P8),P8='no',
-espregunta('tiene brotes comidas?',P9),P9='no',
-espregunta('tiene el follaje destruida ?',P10),P10='no',
-pf3('C:/Programa/pinnaspis.jpg','PINNASPIS','C:/Programa/pinnaspist.bmp').
-%ICERVA PURCHASI
-larvas(P1,P2,P3,P4,P5,P6,P7,P8,P9,P10):-
-espregunta('presenta larvas blancas?',P1),P1='no',
-espregunta('la larva es grande?',P2),P2='si',
-espregunta('tiene las hojas comidas?',P3),P3='no',
-espregunta('tiene la medula de tallo destruida ?',P4),P4='no',
-espregunta('la larva es alargada?',P5),P5='no',
-espregunta('se encuentra en las vainas?',P6),P6='no',
-espregunta('se encuentra en las ramas?',P7),P7='si',
-espregunta('se encuentra  en los tallos?',P8),P8='si',
-espregunta('tiene brotes comidas?',P9),P9='no',
-espregunta('tiene el follaje destruida ?',P10),P10='no',
-        pf3('C:/Programa/pinnaspis.jpg',' ICERVA PUTCHASI').
-
-
-%LARVAS DE POLILLAS
-larvas(P1,P2,P3,P4,P5,P6,P7,P8,P9,P10):-
-espregunta('presenta larvas blancas?',P1),P1='no',
-espregunta('la larva es grande?',P2),P2='no',
-espregunta('tiene las hojas comidas?',P3),P3='no',
-espregunta('tiene la medula de tallo destruida ?',P4),P4='si',
-espregunta('la larva es alargada?',P5),P5='no',
-espregunta('se encuentra en las vainas?',P6),P6='no',
-espregunta('se encuentra en las ramas?',P7),P7='no',
-espregunta('se encuentra  en los tallos?',P8),P8='no',
-espregunta('tiene brotes comidas?',P9),P9='no',
-espregunta('tiene el follaje destruida ?',P10),P10='si',
-
-pf1('C:/Programa/polilla.jpg','POLILLA','C:/Programa/polillast.jpg').
-        %BARRENEDORES
-larvas(P1,P2,P3,P4,P5,P6,P7,P8,P9,P10):-
-espregunta('presenta larvas blancas?',P1),P1='no',
-espregunta('la larva es grande?',P2),P2='no',
-espregunta('tiene las hojas comidas?',P3),P3='si',
-espregunta('tiene la medula de tallo destruida ?',P4),P4='no',
-espregunta('la larva es alargada?',P5),P5='no',
-espregunta('se encuentra en las vainas?',P6),P6='no',
-espregunta('se encuentra en las ramas?',P7),P7='no',
-espregunta('se encuentra  en los tallos?',P8),P8='no',
-espregunta('tiene brotes comidas?',P9),P9='si',
-espregunta('tiene el follaje destruida ?',P10),P10='no',
-
- pf1('C:/Programa/larvasp.jpg','LARVAS DE POLILLA','C:/Programa/polillast.jpg').
-
-
-
-
-
-larvas(_,_,_,_,_,_,_,_,_,_):-new(D,dialog('ERROR')),
-new(L,label(l,'PLAGA NO DETERMINADA',font('times','roman',16))),
-send(D,append,L),
-send(D,open,point(350,350)).
-
-
-
-
-
-
-
+    fronto(_,_):-new(D,dialog('ERROR')),
+    new(L,label(l,'ESPECIE NO DETERMINADA',font('times','roman',16))),
+    send(D,append,L),
+    send(D,open,point(350,350)).
 
 
 image(X):-new(D,dialog('PLAGA')),
