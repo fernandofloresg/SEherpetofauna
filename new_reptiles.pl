@@ -9,50 +9,25 @@ espregunta('Escamas alrededor de la parte media del cuerpo perfectamente lisas, 
 espregunta('Frontonasal presente, pliegue lateral bien desarrollado?',X):-esrespuesta(X).
 espregunta('Segundo par de escudos geniales separados por una escama?',X):-esrespuesta(X).
 
-%MOSCA BLANCA
-espregunta('se ubica en el enves de la hoja ?',X):-esrespuesta(X).
-espregunta('tiene presencia de hojas picadas?',X):-esrespuesta(X).
-espregunta('tiene presencia de hongos ?',X):-esrespuesta(X).
-espregunta('tiene secreciones melosas ?',X):-esrespuesta(X).
-%POLILLA
-espregunta('tiene las hojas comidas?',X):-esrespuesta(X).
-espregunta('tiene brotes comidas?',X):-esrespuesta(X).
-espregunta('tiene la medula de tallo destruida ?',X):-esrespuesta(X).
-espregunta('tiene el follaje destruida ?',X):-esrespuesta(X).
-%PULGONES
-espregunta('presenta las yemas caidas ?',X):-esrespuesta(X).
-espregunta('presenta frutos peque�os?',X):-esrespuesta(X).
-espregunta('presenta brotes muertos',X):-esrespuesta(X).
-espregunta('son brotes peque�os?',X):-esrespuesta(X).
-espregunta('presenta huevecillos?',X):-esrespuesta(X).
-espregunta('baja produccion de vainas?',X):-esrespuesta(X).
-espregunta('tiene las vainas encurvadas ?',X):-esrespuesta(X).
-espregunta('tiene las hojas encrespadas?',X):-esrespuesta(X).
-espregunta('vainas con peso normal?',X):-esrespuesta(X).
-espregunta('vainas con tama�o normal?',X):-esrespuesta(X).
-espregunta('presenta ceniza blanca en hojas?',X):-esrespuesta(X).
-espregunta('enegrecimiento de brotes?',X):-esrespuesta(X).
-espregunta('enegrecimiento de flores?',X):-esrespuesta(X).
-espregunta('enegrecimiento de frutos?',X):-esrespuesta(X).
-%ACARINA
-espregunta('tiene manchas blanquesinas ?',X):-esrespuesta(X).
-espregunta('tiene las hojas secas ?',X):-esrespuesta(X).
-espregunta('tiene perdida de hojas?',X):-esrespuesta(X).
-%CHINCHES
-espregunta('tiene las hojas picadas?',X):-esrespuesta(X).
-espregunta('tiene las hojas encojidas?',X):-esrespuesta(X).
-%MOSCA MINADORA
+%Tercer RAMA
+espregunta('Escamas ventrales grandes, cuadrangulares, en ocho series longitudinales?',X):-esrespuesta(X).
+espregunta('Cabeza con una serie de espinas oseas en la parte posterior?',X):-esrespuesta(X).
+espregunta('Con bolsa posfemoral?',X):-esrespuesta(X).
 
-espregunta('tiene las hojas minadas?',X):-esrespuesta(X).
+%Cuarta rama divisoria
+espregunta('Con dos escamas postrostrales?',X):-esrespuesta(X).
 
-%QUEREZA
-espregunta('presenta larvas blancas?',X):-esrespuesta(X).
-espregunta('la larva es alargada?',X):-esrespuesta(X).
-espregunta('se encuentra en las vainas?',X):-esrespuesta(X).
-espregunta('la larva es peque�a?',X):-esrespuesta(X).
-espregunta('la larva es grande?',X):-esrespuesta(X).
-espregunta('se encuentra en las ramas?',X):-esrespuesta(X).
-espregunta('se encuentra  en los tallos?',X):-esrespuesta(X).
+%Escamas nucales
+espregunta('Escamas nucales laterales mas pequeñas y bien diferenciadas de las escamas nucales dorsales?',X):-esrespuesta(X).
+espregunta('La LHC en los adultos no sobrepasa los 61mm?',X):-esrespuesta(X).
+espregunta('Region dorsal con 6 lineas transversales paralelas sobre un campo oscuro, con manchas oscuras en la ingle?',X):-esrespuesta(X).
+espregunta('Posee una escama cantal?',X):-esrespuesta(X).
+espregunta('Machos con el vientre de color gris oscuro, con manchas en forma de barra sobre la garganta y lados del abdomen?',X):-esrespuesta(X).
+
+%Con collar completo
+espregunta('Con collar completo en la region de la nuca de color oscuro, bordeado por lineas claras?',X):-esrespuesta(X).
+espregunta('Escamas supraoculares en una sola serie, no divididas; color dorsal del cuerpo gris oscuro, sin puntos claros?',X):-esrespuesta(X).
+espregunta('Escamas dorsales 31 o menos; cola sin bandas de igual amplitud, alternadas de color claro y negro?',X):-esrespuesta(X).
 
 %PRINCIPAL
 espregunta('Provisto de concha ósea que cubre el lomo ?',X):-esrespuesta(X).
@@ -165,7 +140,7 @@ ph:-new(D,dialog('PREGUNTAS')),
 
   barisia(P1):-
   espregunta('Escamas alrededor de la parte media del cuerpo perfectamente lisas, cicloides y de tamaño similar?',P1),P1='no',
-  pescamasdorso.
+  pescamasventrales.
 
 
   barisia(_,_):-new(D,dialog('ERROR')),
@@ -180,7 +155,7 @@ pb:-new(D,dialog('PREGUNTAS')),
     send_list(Pre2,append,[si,no]),
     send(D,append(Pre1)),
     send(D,append(Pre2)),
-    new(B1,button(atras,and(message(@prolog,pp),message(D,destroy)))),
+    new(B1,button(atras,and(message(@prolog,ph),message(D,destroy)))),
             new(B,button(siguiente,message(@prolog,fronto,Pre1?selection,Pre2?selection))),
     send(D,append,B1),
     send(D,append,B),
@@ -209,6 +184,213 @@ pb:-new(D,dialog('PREGUNTAS')),
     send(D,append,L),
     send(D,open,point(350,350)).
 
+pescamasventrales:-new(D,dialog('PREGUNTAS')),
+        new(Pre1,menu('Escamas ventrales grandes, cuadrangulares, en ocho series longitudinales?')),
+        send_list(Pre1,append,[si , no]),
+        new(Pre2,menu('Cabeza con una serie de espinas oseas en la parte posterior?')),
+        send_list(Pre2,append,[si,no]),
+        new(Pre3,menu('Con bolsa posfemoral?')),
+        send_list(Pre3,append,[si,no]),
+        send(D,append(Pre1)),
+        send(D,append(Pre2)),
+        send(D,append(Pre3)),
+        new(B1,button(atras,and(message(@prolog,ph),message(D,destroy)))),
+                new(B,button(siguiente,message(@prolog,ventrales,Pre1?selection,Pre2?selection,Pre3?selection))),
+        send(D,append,B1),
+        send(D,append,B),
+        send(D,open,point(300,300)).
+
+
+        %Aspidoscelis gularis.
+        ventrales(P1,P2,P3):-
+        espregunta('Escamas ventrales grandes, cuadrangulares, en ocho series longitudinales?',P1),P1='si',
+        espregunta('Cabeza con una serie de espinas oseas en la parte posterior?',P2),P2='no',
+        espregunta('Con bolsa posfemoral?',P3),P3='no',
+        pf1('./SEherpetofauna/imagenes/Aspidoscelis gularis.jpg','CHINCHES','./SEherpetofauna/imagenes/Aspidoscelis gularis.jpg').
+
+        %Phrynosoma orbiculare.
+        ventrales(P1,P2,P3):-
+        espregunta('Escamas ventrales grandes, cuadrangulares, en ocho series longitudinales?',P1),P1='no',
+        espregunta('Cabeza con una serie de espinas oseas en la parte posterior?',P2),P2='si',
+        espregunta('Con bolsa posfemoral?',P3),P3='no',
+        pf1('./SEherpetofauna/imagenes/Phrynosoma orbiculare.jpg','CHINCHES','./SEherpetofauna/imagenes/Phrynosoma orbiculare.jpg').
+
+        %Sceloporus parvus.
+        ventrales(P1,P2,P3):-
+        espregunta('Escamas ventrales grandes, cuadrangulares, en ocho series longitudinales?',P1),P1='no',
+        espregunta('Cabeza con una serie de espinas oseas en la parte posterior?',P2),P2='no',
+        espregunta('Con bolsa posfemoral?',P3),P3='si',
+        pf1('./SEherpetofauna/imagenes/Sceloporus parvus.jpg','CHINCHES','./SEherpetofauna/imagenes/Sceloporus parvus.jpg').
+
+        %Siguiente rama
+        ventrales(P1,P2,P3):-
+        espregunta('Escamas ventrales grandes, cuadrangulares, en ocho series longitudinales?',P1),P1='no',
+        espregunta('Cabeza con una serie de espinas oseas en la parte posterior?',P2),P2='no',
+        espregunta('Con bolsa posfemoral?',P3),P3='no',
+        postros.
+
+        ventrales(_,_,_):-new(D,dialog('ERROR')),
+        new(L,label(l,'ESPECIE NO DETERMINADA',font('times','roman',16))),
+        send(D,append,L),
+        send(D,open,point(350,350)).
+
+postros:-new(D,dialog('PREGUNTAS')),
+                  new(Pre1,menu('Con dos escamas postrostrales?')),
+                 send_list(Pre1,append,[si , no]),
+                    send(D,append(Pre1)),
+                    new(B1,button(atras,and(message(@prolog,pescamasventrales),message(D,destroy)))),
+                new(B,button(siguiente,and(message(@prolog,postros17,Pre1?selection),message(D,destroy)))),
+                send(D,append,B),
+                send(D,default_button,siguiente),
+                  send(D,open,point(350,350)).
+
+          %Segunda divisiónespregunta('',X):-esrespuesta(X).
+          postros17(P1):-
+          espregunta('Con dos escamas postrostrales?',P1),P1='si',
+          nucales.
+
+          postros17(P1):-
+          espregunta('Con dos escamas postrostrales?',P1),P1='no',
+          collares.
+
+
+          postros17(_,_):-new(D,dialog('ERROR')),
+          new(L,label(l,'ELIJA SOLO UNA OPCION',font('times','roman',16))),
+          send(D,append,L),
+          send(D,open,point(350,350)).
+
+
+nucales:-new(D,dialog('PREGUNTAS')),
+        new(Pre1,menu('Escamas nucales laterales mas pequeñas y bien diferenciadas de las escamas nucales dorsales?')),
+        send_list(Pre1,append,[si , no]),
+        new(Pre2,menu('La LHC en los adultos no sobrepasa los 61mm?')),
+        send_list(Pre2,append,[si,no]),
+        new(Pre3,menu('Region dorsal con 6 lineas transversales paralelas sobre un campo oscuro, con manchas oscuras en la ingle?')),
+        send_list(Pre3,append,[si,no]),
+        new(Pre4,menu('Posee una escama cantal?')),
+        send_list(Pre4,append,[si,no]),
+        new(Pre5,menu('Machos con el vientre de color gris oscuro, con manchas en forma de barra sobre la garganta y lados del abdomen?')),
+        send_list(Pre5,append,[si,no]),
+        send(D,append(Pre1)),
+        send(D,append(Pre2)),
+        send(D,append(Pre3)),
+        send(D,append(Pre4)),
+        send(D,append(Pre5)),
+        new(B1,button(atras,and(message(@prolog,postros),message(D,destroy)))),
+                new(B,button(siguiente,message(@prolog,laterales,Pre1?selection,Pre2?selection,Pre3?selection,Pre4?selection,Pre5?selection))),
+        send(D,append,B1),
+        send(D,append,B),
+        send(D,open,point(300,300)).
+
+
+        %Sceloporus anahuacus.
+        laterales(P1,P2,P3,P4,P5):-
+        espregunta('Escamas nucales laterales mas pequeñas y bien diferenciadas de las escamas nucales dorsales?',P1),P1='si',
+        espregunta('La LHC en los adultos no sobrepasa los 61mm?',P2),P2='si',
+        espregunta('Region dorsal con 6 lineas transversales paralelas sobre un campo oscuro, con manchas oscuras en la ingle?',P3),P3='si',
+        espregunta('Posee una escama cantal?',P4),P4='no',
+        espregunta('Machos con el vientre de color gris oscuro, con manchas en forma de barra sobre la garganta y lados del abdomen?',P5),P5='no',
+        pf1('./SEherpetofauna/imagenes/Sceloporus anahuacus.jpg','CHINCHES','./SEherpetofauna/imagenes/Sceloporus anahuacus.jpg').
+
+        %Sceloporus palaciosi.
+        laterales(P1,P2,P3,P4,P5):-
+        espregunta('Escamas nucales laterales mas pequeñas y bien diferenciadas de las escamas nucales dorsales?',P1),P1='si',
+        espregunta('La LHC en los adultos no sobrepasa los 61mm?',P2),P2='si',
+        espregunta('Region dorsal con 6 lineas transversales paralelas sobre un campo oscuro, con manchas oscuras en la ingle?',P3),P3='no',
+        espregunta('Posee una escama cantal?',P4),P4='no',
+        espregunta('Machos con el vientre de color gris oscuro, con manchas en forma de barra sobre la garganta y lados del abdomen?',P5),P5='no',
+        pf1('./SEherpetofauna/imagenes/Sceloporus palaciosi.jpg','CHINCHES','./SEherpetofauna/imagenes/Sceloporus palaciosi.jpg').
+
+        %Sceloporus grammicus.
+        laterales(P1,P2,P3,P4,P5):-
+        espregunta('Escamas nucales laterales mas pequeñas y bien diferenciadas de las escamas nucales dorsales?',P1),P1='si',
+        espregunta('La LHC en los adultos no sobrepasa los 61mm?',P2),P2='no',
+        espregunta('Region dorsal con 6 lineas transversales paralelas sobre un campo oscuro, con manchas oscuras en la ingle?',P3),P3='no',
+        espregunta('Posee una escama cantal?',P4),P4='no',
+        espregunta('Machos con el vientre de color gris oscuro, con manchas en forma de barra sobre la garganta y lados del abdomen?',P5),P5='no',
+        pf1('./SEherpetofauna/imagenes/Sceloporus grammicus.jpg','CHINCHES','./SEherpetofauna/imagenes/Sceloporus grammicus.jpg').
+
+        %Sceloporus aeneus.
+        laterales(P1,P2,P3,P4,P5):-
+        espregunta('Escamas nucales laterales mas pequeñas y bien diferenciadas de las escamas nucales dorsales?',P1),P1='no',
+        espregunta('La LHC en los adultos no sobrepasa los 61mm?',P2),P2='no',
+        espregunta('Region dorsal con 6 lineas transversales paralelas sobre un campo oscuro, con manchas oscuras en la ingle?',P3),P3='no',
+        espregunta('Posee una escama cantal?',P4),P4='si',
+        espregunta('Machos con el vientre de color gris oscuro, con manchas en forma de barra sobre la garganta y lados del abdomen?',P5),P5='no',
+        pf1('./SEherpetofauna/imagenes/sceloporus aeneus.jpg','CHINCHES','./SEherpetofauna/imagenes/sceloporus aeneus.jpg').
+
+        %Sceloporus scalaris.
+        laterales(P1,P2,P3,P4,P5):-
+        espregunta('Escamas nucales laterales mas pequeñas y bien diferenciadas de las escamas nucales dorsales?',P1),P1='no',
+        espregunta('La LHC en los adultos no sobrepasa los 61mm?',P2),P2='no',
+        espregunta('Region dorsal con 6 lineas transversales paralelas sobre un campo oscuro, con manchas oscuras en la ingle?',P3),P3='no',
+        espregunta('Posee una escama cantal?',P4),P4='no',
+        espregunta('Machos con el vientre de color gris oscuro, con manchas en forma de barra sobre la garganta y lados del abdomen?',P5),P5='si',
+        pf1('./SEherpetofauna/imagenes/Sceloporus scalaris.jpg','CHINCHES','./SEherpetofauna/imagenes/Sceloporus scalaris.jpg').
+
+        %Sceloporus bicanthalis.
+        laterales(P1,P2,P3,P4,P5):-
+        espregunta('Escamas nucales laterales mas pequeñas y bien diferenciadas de las escamas nucales dorsales?',P1),P1='no',
+        espregunta('La LHC en los adultos no sobrepasa los 61mm?',P2),P2='no',
+        espregunta('Region dorsal con 6 lineas transversales paralelas sobre un campo oscuro, con manchas oscuras en la ingle?',P3),P3='no',
+        espregunta('Posee una escama cantal?',P4),P4='no',
+        espregunta('Machos con el vientre de color gris oscuro, con manchas en forma de barra sobre la garganta y lados del abdomen?',P5),P5='no',
+        pf1('./SEherpetofauna/imagenes/Sceloporus bicanthalis.jpg','CHINCHES','./SEherpetofauna/imagenes/Sceloporus bicanthalis.jpg').
+
+
+        laterales(_,_,_,_,_):-new(D,dialog('ERROR')),
+        new(L,label(l,'ESPECIE NO DETERMINADA',font('times','roman',16))),
+        send(D,append,L),
+        send(D,open,point(350,350)).
+
+collares:-new(D,dialog('PREGUNTAS')),
+        new(Pre1,menu('Con collar completo en la region de la nuca de color oscuro, bordeado por lineas claras?')),
+        send_list(Pre1,append,[si , no]),
+        new(Pre2,menu('Escamas supraoculares en una sola serie, no divididas; color dorsal del cuerpo gris oscuro, sin puntos claros?')),
+        send_list(Pre2,append,[si,no]),
+        new(Pre3,menu('Escamas dorsales 31 o menos; cola sin bandas de igual amplitud, alternadas de color claro y negro?')),
+        send_list(Pre3,append,[si,no]),
+        send(D,append(Pre1)),
+        send(D,append(Pre2)),
+        send(D,append(Pre3)),
+        new(B1,button(atras,and(message(@prolog,postros),message(D,destroy)))),
+                new(B,button(siguiente,message(@prolog,completo,Pre1?selection,Pre2?selection,Pre3?selection))),
+        send(D,append,B1),
+        send(D,append,B),
+        send(D,open,point(300,300)).
+
+        %Sceloporus torquatus.
+        completo(P1,P2,P3):-
+        espregunta('Con collar completo en la region de la nuca de color oscuro, bordeado por lineas claras?',P1),P1='si',
+        espregunta('Escamas supraoculares en una sola serie, no divididas; color dorsal del cuerpo gris oscuro, sin puntos claros?',P2),P2='si',
+        espregunta('Escamas dorsales 31 o menos; cola sin bandas de igual amplitud, alternadas de color claro y negro?',P3),P3='no',
+        pf1('./SEherpetofauna/imagenes/Sceloporus torquatus.jpg','CHINCHES','./SEherpetofauna/imagenes/Sceloporus torquatus.jpg').
+
+        %Sceloporus spinosus
+        completo(P1,P2,P3):-
+        espregunta('Con collar completo en la region de la nuca de color oscuro, bordeado por lineas claras?',P1),P1='no',
+        espregunta('Escamas supraoculares en una sola serie, no divididas; color dorsal del cuerpo gris oscuro, sin puntos claros?',P2),P2='no',
+        espregunta('Escamas dorsales 31 o menos; cola sin bandas de igual amplitud, alternadas de color claro y negro?',P3),P3='no',
+        pf1('./SEherpetofauna/imagenes/Sceloporus spinosus.jpg','CHINCHES','./SEherpetofauna/imagenes/Sceloporus spinosus.jpg').
+
+        %Sceloporus mucronatus.
+        completo(P1,P2,P3):-
+        espregunta('Con collar completo en la region de la nuca de color oscuro, bordeado por lineas claras?',P1),P1='si',
+        espregunta('Escamas supraoculares en una sola serie, no divididas; color dorsal del cuerpo gris oscuro, sin puntos claros?',P2),P2='no',
+        espregunta('Escamas dorsales 31 o menos; cola sin bandas de igual amplitud, alternadas de color claro y negro?',P3),P3='si',
+        pf1('./SEherpetofauna/imagenes/Sceloporus mucronatus.jpg','CHINCHES','./SEherpetofauna/imagenes/Sceloporus mucronatus.jpg').
+
+        %Sceloporus sugillatus.
+        completo(P1,P2,P3):-
+        espregunta('Con collar completo en la region de la nuca de color oscuro, bordeado por lineas claras?',P1),P1='si',
+        espregunta('Escamas supraoculares en una sola serie, no divididas; color dorsal del cuerpo gris oscuro, sin puntos claros?',P2),P2='no',
+        espregunta('Escamas dorsales 31 o menos; cola sin bandas de igual amplitud, alternadas de color claro y negro?',P3),P3='no',
+        pf1('./SEherpetofauna/imagenes/Sceloporus sugillatus.jpg','CHINCHES','./SEherpetofauna/imagenes/Sceloporus sugillatus.jpg').
+
+        completo(_,_,_):-new(D,dialog('ERROR')),
+        new(L,label(l,'ESPECIE NO DETERMINADA',font('times','roman',16))),
+        send(D,append,L),
+        send(D,open,point(350,350)).
 
 image(X):-new(D,dialog('PLAGA')),
         mostrar1(X,D),
