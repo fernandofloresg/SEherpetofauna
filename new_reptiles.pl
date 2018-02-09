@@ -43,7 +43,7 @@ main:-
                          [ menu_item(iniciar, message(@prolog,pp))
                          ]),
         send_list(Ayuda, append,
-                         [ menu_item(autor, message(@display, inform, 'Edgar Espinosa Ordoñes, Fernando Flores, Mario Ivan Moreno Perez'))
+                         [ menu_item(autores, message(@display, inform, 'Edgar Espinosa Ordoñes, Fernando Flores, Mario Ivan Moreno Perez'))
                          ]),
         mostrar('C:/Programa/rep1.jpg',D,Menu),
         send(D,open,point(200,200)).
@@ -60,7 +60,7 @@ mostrar(V,D,M):- new(I, image(V)),
         send(D1,below(M)).
 
 pp:-new(D,dialog('PREGUNTAS')),
-        new(Pre1,menu('Provisto de concha ósea que cubre el lomo ?')),
+        new(Pre1,menu('Provisto de concha osea que cubre el lomo ?')),
        send_list(Pre1,append,[si , no]),
           send(D,append(Pre1)),
 
@@ -414,7 +414,7 @@ mostrar1(V,D):- new(I, image(V)),
 
 pf1(X,Y,Z):-new(D,dialog('IMAGEN DEL REPTIL')),
           mostrar2(X,D,20,30),
-         send(D, append(label(n,'REPTILES'))),
+         send(D, append(label(n,' '))),
          send(D, append(label(n,Y))),
          %mostrar2(Z,D,20,350),
          send(D,open).
