@@ -34,7 +34,7 @@ espregunta('Provisto de concha ósea que cubre el lomo ?',X):-esrespuesta(X).
 
 main:-
         new(D,dialog('SISTEMA EXPERTO DE REPTILES DEL VALLE DE MEXICO')),
-        send(D,size,size(560,400)),
+        send(D,size,size(400,400)),
         send(D,colour,colour(red)),
         send(D, append, new(Menu, menu_bar)),
         send(Menu, append, new(Iniciar, popup(iniciar))),
@@ -104,20 +104,20 @@ pc:-new(D,dialog('PREGUNTAS')),
 tortugas(P1,P2):-
   espregunta('Lobulo posterior de plastron fijo?',P1),P1='si',
   espregunta('Escama nasal dividida?',P2),P2='no',
-  pf1('./SEherpetofauna/imagenes/Kinosternon herrerai.jpg',' ','./SEherpetofauna/imagenes/Kinosternon herrerai.jpg').
+  pf1('./SEherpetofauna/imagenes/Kinosternon herrerai.jpg','Kinosternon herrerai ','./SEherpetofauna/imagenes/Kinosternon herrerai.jpg').
 
 
 %Kinosternon hirtipes
 tortugas(P1,P2):-
   espregunta('Lobulo posterior de plastron fijo?',P1),P1='no',
   espregunta('Escama nasal dividida?',P2),P2='si',
-  pf1('./SEherpetofauna/imagenes/Kinosternon hirtipes.jpg',' ','./SEherpetofauna/imagenes/Kinosternon hirtipes.jpg').
+  pf1('./SEherpetofauna/imagenes/Kinosternon hirtipes.jpg','Kinosternon hirtipes ','./SEherpetofauna/imagenes/Kinosternon hirtipes.jpg').
 
 %Kinosternon integrum
 tortugas(P1,P2):-
   espregunta('Lobulo posterior de plastron fijo?',P1),P1='no',
   espregunta('Escama nasal dividida?',P2),P2='no',
-  pf1('./SEherpetofauna/imagenes/Kinosternon integrum.jpg',' ','./SEherpetofauna/imagenes/Kinosternon integrum.jpg').
+  pf1('./SEherpetofauna/imagenes/Kinosternon integrum.jpg','Kinosternon integrum ','./SEherpetofauna/imagenes/Kinosternon integrum.jpg').
 
   tortugas(_,_):-new(D,dialog('ERROR')),
   new(L,label(l,'ESPECIE NO DETERMINADA',font('times','roman',16))),
@@ -166,19 +166,19 @@ pb:-new(D,dialog('PREGUNTAS')),
     fronto(P1,P2):-
     espregunta('Frontonasal presente, pliegue lateral bien desarrollado?',P1),P1='si',
     espregunta('Segundo par de escudos geniales separados por una escama?',P2),P2='no',
-    pf1('./SEherpetofauna/imagenes/Abronia deppii.jpg',' ','./SEherpetofauna/imagenes/Abronia deppii.jpg').
+    pf1('./SEherpetofauna/imagenes/Abronia deppii.jpg','Abronia deppii ','./SEherpetofauna/imagenes/Abronia deppii.jpg').
 
     %Barisia imbricata
     fronto(P1,P2):-
     espregunta('Frontonasal presente, pliegue lateral bien desarrollado?',P1),P1='no',
     espregunta('Segundo par de escudos geniales separados por una escama?',P2),P2='si',
-    pf1('./SEherpetofauna/imagenes/Barisia imbricata.jpg',' ','./SEherpetofauna/imagenes/Barisia imbricata.jpg').
+    pf1('./SEherpetofauna/imagenes/Barisia imbricata.jpg','Barisia imbricata ','./SEherpetofauna/imagenes/Barisia imbricata.jpg').
 
     %Barisia herrerae
     fronto(P1,P2):-
     espregunta('Frontonasal presente, pliegue lateral bien desarrollado?',P1),P1='no',
     espregunta('Segundo par de escudos geniales separados por una escama?',P2),P2='si',
-    pf1('./SEherpetofauna/imagenes/Barisia herrerae.jpg',' ','./SEherpetofauna/imagenes/Barisia herrerae.jpg').
+    pf1('./SEherpetofauna/imagenes/Barisia herrerae.jpg','Barisia herrerae ','./SEherpetofauna/imagenes/Barisia herrerae.jpg').
 
     fronto(_,_):-new(D,dialog('ERROR')),
     new(L,label(l,'ESPECIE NO DETERMINADA',font('times','roman',16))),
@@ -207,21 +207,21 @@ pescamasventrales:-new(D,dialog('PREGUNTAS')),
         espregunta('Escamas ventrales grandes, cuadrangulares, en ocho series longitudinales?',P1),P1='si',
         espregunta('Cabeza con una serie de espinas oseas en la parte posterior?',P2),P2='no',
         espregunta('Con bolsa posfemoral?',P3),P3='no',
-        pf1('./SEherpetofauna/imagenes/Aspidoscelis gularis.jpg',' ','./SEherpetofauna/imagenes/Aspidoscelis gularis.jpg').
+        pf1('./SEherpetofauna/imagenes/Aspidoscelis gularis.jpg','Aspidoscelis gularis ','./SEherpetofauna/imagenes/Aspidoscelis gularis.jpg').
 
         %Phrynosoma orbiculare.
         ventrales(P1,P2,P3):-
         espregunta('Escamas ventrales grandes, cuadrangulares, en ocho series longitudinales?',P1),P1='no',
         espregunta('Cabeza con una serie de espinas oseas en la parte posterior?',P2),P2='si',
         espregunta('Con bolsa posfemoral?',P3),P3='no',
-        pf1('./SEherpetofauna/imagenes/Phrynosoma orbiculare.jpg',' ','./SEherpetofauna/imagenes/Phrynosoma orbiculare.jpg').
+        pf1('./SEherpetofauna/imagenes/Phrynosoma orbiculare.jpg','Phrynosoma orbiculare','./SEherpetofauna/imagenes/Phrynosoma orbiculare.jpg').
 
         %Sceloporus parvus.
         ventrales(P1,P2,P3):-
         espregunta('Escamas ventrales grandes, cuadrangulares, en ocho series longitudinales?',P1),P1='no',
         espregunta('Cabeza con una serie de espinas oseas en la parte posterior?',P2),P2='no',
         espregunta('Con bolsa posfemoral?',P3),P3='si',
-        pf1('./SEherpetofauna/imagenes/Sceloporus parvus.jpg',' ','./SEherpetofauna/imagenes/Sceloporus parvus.jpg').
+        pf1('./SEherpetofauna/imagenes/Sceloporus parvus.jpg','Sceloporus parvus','./SEherpetofauna/imagenes/Sceloporus parvus.jpg').
 
         %Siguiente rama
         ventrales(P1,P2,P3):-
@@ -291,7 +291,7 @@ nucales:-new(D,dialog('PREGUNTAS')),
         espregunta('Region dorsal con 6 lineas transversales paralelas sobre un campo oscuro, con manchas oscuras en la ingle?',P3),P3='si',
         espregunta('Posee una escama cantal?',P4),P4='no',
         espregunta('Machos con el vientre de color gris oscuro, con manchas en forma de barra sobre la garganta y lados del abdomen?',P5),P5='no',
-        pf1('./SEherpetofauna/imagenes/Sceloporus anahuacus.jpg',' ','./SEherpetofauna/imagenes/Sceloporus anahuacus.jpg').
+        pf1('./SEherpetofauna/imagenes/Sceloporus anahuacus.jpg','Sceloporus anahuacus','./SEherpetofauna/imagenes/Sceloporus anahuacus.jpg').
 
         %Sceloporus palaciosi.
         laterales(P1,P2,P3,P4,P5):-
@@ -300,7 +300,7 @@ nucales:-new(D,dialog('PREGUNTAS')),
         espregunta('Region dorsal con 6 lineas transversales paralelas sobre un campo oscuro, con manchas oscuras en la ingle?',P3),P3='no',
         espregunta('Posee una escama cantal?',P4),P4='no',
         espregunta('Machos con el vientre de color gris oscuro, con manchas en forma de barra sobre la garganta y lados del abdomen?',P5),P5='no',
-        pf1('./SEherpetofauna/imagenes/Sceloporus palaciosi.jpg',' ','./SEherpetofauna/imagenes/Sceloporus palaciosi.jpg').
+        pf1('./SEherpetofauna/imagenes/Sceloporus palaciosi.jpg','Sceloporus palaciosi ','./SEherpetofauna/imagenes/Sceloporus palaciosi.jpg').
 
         %Sceloporus grammicus.
         laterales(P1,P2,P3,P4,P5):-
@@ -309,7 +309,7 @@ nucales:-new(D,dialog('PREGUNTAS')),
         espregunta('Region dorsal con 6 lineas transversales paralelas sobre un campo oscuro, con manchas oscuras en la ingle?',P3),P3='no',
         espregunta('Posee una escama cantal?',P4),P4='no',
         espregunta('Machos con el vientre de color gris oscuro, con manchas en forma de barra sobre la garganta y lados del abdomen?',P5),P5='no',
-        pf1('./SEherpetofauna/imagenes/Sceloporus grammicus.jpg',' ','./SEherpetofauna/imagenes/Sceloporus grammicus.jpg').
+        pf1('./SEherpetofauna/imagenes/Sceloporus grammicus.jpg','Sceloporus grammicus ','./SEherpetofauna/imagenes/Sceloporus grammicus.jpg').
 
         %Sceloporus aeneus.
         laterales(P1,P2,P3,P4,P5):-
@@ -318,7 +318,7 @@ nucales:-new(D,dialog('PREGUNTAS')),
         espregunta('Region dorsal con 6 lineas transversales paralelas sobre un campo oscuro, con manchas oscuras en la ingle?',P3),P3='no',
         espregunta('Posee una escama cantal?',P4),P4='si',
         espregunta('Machos con el vientre de color gris oscuro, con manchas en forma de barra sobre la garganta y lados del abdomen?',P5),P5='no',
-        pf1('./SEherpetofauna/imagenes/sceloporus aeneus.jpg',' ','./SEherpetofauna/imagenes/sceloporus aeneus.jpg').
+        pf1('./SEherpetofauna/imagenes/sceloporus aeneus.jpg','Sceloporus aeneus ','./SEherpetofauna/imagenes/sceloporus aeneus.jpg').
 
         %Sceloporus scalaris.
         laterales(P1,P2,P3,P4,P5):-
@@ -327,7 +327,7 @@ nucales:-new(D,dialog('PREGUNTAS')),
         espregunta('Region dorsal con 6 lineas transversales paralelas sobre un campo oscuro, con manchas oscuras en la ingle?',P3),P3='no',
         espregunta('Posee una escama cantal?',P4),P4='no',
         espregunta('Machos con el vientre de color gris oscuro, con manchas en forma de barra sobre la garganta y lados del abdomen?',P5),P5='si',
-        pf1('./SEherpetofauna/imagenes/Sceloporus scalaris.jpg',' ','./SEherpetofauna/imagenes/Sceloporus scalaris.jpg').
+        pf1('./SEherpetofauna/imagenes/Sceloporus scalaris.jpg','Sceloporus scalaris ','./SEherpetofauna/imagenes/Sceloporus scalaris.jpg').
 
         %Sceloporus bicanthalis.
         laterales(P1,P2,P3,P4,P5):-
@@ -336,7 +336,7 @@ nucales:-new(D,dialog('PREGUNTAS')),
         espregunta('Region dorsal con 6 lineas transversales paralelas sobre un campo oscuro, con manchas oscuras en la ingle?',P3),P3='no',
         espregunta('Posee una escama cantal?',P4),P4='no',
         espregunta('Machos con el vientre de color gris oscuro, con manchas en forma de barra sobre la garganta y lados del abdomen?',P5),P5='no',
-        pf1('./SEherpetofauna/imagenes/Sceloporus bicanthalis.jpg',' ','./SEherpetofauna/imagenes/Sceloporus bicanthalis.jpg').
+        pf1('./SEherpetofauna/imagenes/Sceloporus bicanthalis.jpg','Sceloporus bicanthalis ','./SEherpetofauna/imagenes/Sceloporus bicanthalis.jpg').
 
 
         laterales(_,_,_,_,_):-new(D,dialog('ERROR')),
@@ -365,28 +365,28 @@ collares:-new(D,dialog('PREGUNTAS')),
         espregunta('Con collar completo en la region de la nuca de color oscuro, bordeado por lineas claras?',P1),P1='si',
         espregunta('Escamas supraoculares en una sola serie, no divididas; color dorsal del cuerpo gris oscuro, sin puntos claros?',P2),P2='si',
         espregunta('Escamas dorsales 31 o menos; cola sin bandas de igual amplitud, alternadas de color claro y negro?',P3),P3='no',
-        pf1('./SEherpetofauna/imagenes/Sceloporus torquatus.jpg',' ','./SEherpetofauna/imagenes/Sceloporus torquatus.jpg').
+        pf1('./SEherpetofauna/imagenes/Sceloporus torquatus.jpg','Sceloporus torquatus ','./SEherpetofauna/imagenes/Sceloporus torquatus.jpg').
 
         %Sceloporus spinosus
         completo(P1,P2,P3):-
         espregunta('Con collar completo en la region de la nuca de color oscuro, bordeado por lineas claras?',P1),P1='no',
         espregunta('Escamas supraoculares en una sola serie, no divididas; color dorsal del cuerpo gris oscuro, sin puntos claros?',P2),P2='no',
         espregunta('Escamas dorsales 31 o menos; cola sin bandas de igual amplitud, alternadas de color claro y negro?',P3),P3='no',
-        pf1('./SEherpetofauna/imagenes/Sceloporus spinosus.jpg',' ','./SEherpetofauna/imagenes/Sceloporus spinosus.jpg').
+        pf1('./SEherpetofauna/imagenes/Sceloporus spinosus.jpg','Sceloporus spinosus ','./SEherpetofauna/imagenes/Sceloporus spinosus.jpg').
 
         %Sceloporus mucronatus.
         completo(P1,P2,P3):-
         espregunta('Con collar completo en la region de la nuca de color oscuro, bordeado por lineas claras?',P1),P1='si',
         espregunta('Escamas supraoculares en una sola serie, no divididas; color dorsal del cuerpo gris oscuro, sin puntos claros?',P2),P2='no',
         espregunta('Escamas dorsales 31 o menos; cola sin bandas de igual amplitud, alternadas de color claro y negro?',P3),P3='si',
-        pf1('./SEherpetofauna/imagenes/Sceloporus mucronatus.jpg',' ','./SEherpetofauna/imagenes/Sceloporus mucronatus.jpg').
+        pf1('./SEherpetofauna/imagenes/Sceloporus mucronatus.jpg','Sceloporus mucronatus ','./SEherpetofauna/imagenes/Sceloporus mucronatus.jpg').
 
         %Sceloporus sugillatus.
         completo(P1,P2,P3):-
         espregunta('Con collar completo en la region de la nuca de color oscuro, bordeado por lineas claras?',P1),P1='si',
         espregunta('Escamas supraoculares en una sola serie, no divididas; color dorsal del cuerpo gris oscuro, sin puntos claros?',P2),P2='no',
         espregunta('Escamas dorsales 31 o menos; cola sin bandas de igual amplitud, alternadas de color claro y negro?',P3),P3='no',
-        pf1('./SEherpetofauna/imagenes/Sceloporus sugillatus.jpg',' ','./SEherpetofauna/imagenes/Sceloporus sugillatus.jpg').
+        pf1('./SEherpetofauna/imagenes/Sceloporus sugillatus.jpg','Sceloporus sugillatus ','./SEherpetofauna/imagenes/Sceloporus sugillatus.jpg').
 
         completo(_,_,_):-new(D,dialog('ERROR')),
         new(L,label(l,'ESPECIE NO DETERMINADA',font('times','roman',16))),
@@ -414,7 +414,6 @@ mostrar1(V,D):- new(I, image(V)),
 
 pf1(X,Y,Z):-new(D,dialog('IMAGEN DEL REPTIL')),
           mostrar2(X,D,20,30),
-         send(D, append(label(n,' '))),
          send(D, append(label(n,Y))),
          %mostrar2(Z,D,20,350),
          send(D,open).
@@ -423,7 +422,7 @@ f1(X,Y):-new(F,frame('IMAGEN DEL REPTIL')),
   send(F,append(new(F1,browser))),
    mostrar(X,F1),
    send(new(D,dialog),below(F1)),
-   send(D, append(label(n,'REPTILES'))),
+   send(D, append(label(n,' '))),
    send(D, append(label(n,Y))),
 
 
